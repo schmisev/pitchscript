@@ -14,12 +14,11 @@ Grammar
 Note/chord syntax:
 
 - Notes/chords are written with
--- a root note (lowercase letters a-g)
--- opt: increments sharp (#) or flat (&)
--- opt: absolute octave (ignores global reference octave) (numbers [0-9]+)
--- opt: chord prefix (') and chord shape (e.g. maj7)
---- opt: inversion prefix (/) and inversion pivot (lowercase letters a-g)
-    (when the pivot is in the chord, the chord is inverted so the pivot becomes the lowest note; when it is not, it is shifted one octave down,making it a bass note)
+- a root note (lowercase letters a-g)
+- opt: increments sharp (#) or flat (&)
+- opt: absolute octave (ignores global reference octave) (numbers [0-9]+)
+- opt: chord prefix (') and chord shape (e.g. maj7)
+- opt: inversion prefix (/) and inversion pivot (lowercase letters a-g) (when the pivot is in the chord, the chord is inverted so the pivot becomes the lowest note; when it is not, it is shifted one octave down,making it a bass note)
 
 In order to add notes and chords to the writehead, they are just written in sequence without being interupted by timing commands. Else the writehead is overwritten.
 
@@ -31,11 +30,11 @@ Examples:
 
 Single-character prefix commands:
 
-"[0-9]+     set global octave
+- "[0-9]+     set global octave
 
-_[0-9]+     advance time by / rest for given number of beats
-.[0-9]+     play for and advance time by ...
-,[0-9]+     play for, but do not advance time ...
+- _[0-9]+     advance time by / rest for given number of beats
+- .[0-9]+     play for and advance time by ...
+- ,[0-9]+     play for, but do not advance time ...
 
 Note: Unneccesary characters such as spaces are ignored.
 
