@@ -3,7 +3,7 @@ from ps_constants import MACRO_RE
 
 class Preprocessor:
     def __init__(self):
-        matches = re.finditer(MACRO_RE, open("macros").read())
+        matches = re.finditer(MACRO_RE, open("macros.txt").read())
         self.subs = list()
 
         for m in matches:
