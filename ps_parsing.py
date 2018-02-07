@@ -92,7 +92,7 @@ class Parser:
                 s + root_pitch for s in SHAPE_DICT.get(shape[1:], SHAPE_STD)
                 ]
         if inv:
-            pivot_pitch = NOTE_DICT.get(inv[1:], _root) + INCREMENT_DICT.get(invincr, 0) + _sci
+            pivot_pitch = NOTE_DICT.get(inv[1], _root) + INCREMENT_DICT.get(invincr, 0) + _sci * OCTAVE
             pitches = invert_chord(pitches, pivot_pitch)
         
         if self.overwrite:

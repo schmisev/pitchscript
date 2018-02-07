@@ -96,7 +96,7 @@ COMMAND_OR = "[{}]".format(ADVANCE_TIME + PLAY_FOR + PLAY_WHILE + SET_OCTAVE)
 TOKEN EXPRESSIONS
 """
 TOKEN_RE =\
-r"(?P<command>{}[0-9]*)|(?P<root>{})(?P<increment>{})?(?P<sci>[0-9]+)?((?P<shape>\'{}?)((?P<inv>/{})(?P<invincr>{}))?)?".format(COMMAND_OR, NOTE_OR, INCREMENT_OR, SHAPE_OR, NOTE_OR, INCREMENT_OR)
+r"(?P<command>{}[0-9]*)|(?P<root>{})(?P<increment>{})?(?P<sci>[0-9]+)?((?P<shape>\'{}?)((?P<inv>[/]{})(?P<invincr>{})?)?)?".format(COMMAND_OR, NOTE_OR, INCREMENT_OR, SHAPE_OR, NOTE_OR, INCREMENT_OR)
 
 """
 MACRO EXPRESSIONS
