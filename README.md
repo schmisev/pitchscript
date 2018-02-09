@@ -1,11 +1,11 @@
-﻿Pitchscript
+Pitchscript
 ===========
 
 Pitchscript is a simple music notation system that translates to midi-like data.
 
 Pitchscript uses a sort of "write head", in which pitches (notes and/or chords) are stored. They can then be "written" to the midi-like datastructure with the help of some commands.
 
-There are thus only TWO basic types of commands
+There are thus only TWO basic types of syntax elements
 - Update/overwrite pitches in write head
 - Single-character prefix commands for adding notes, rests and adjusting the global pitch/octave
 
@@ -13,14 +13,14 @@ Grammar
 -------
 Note/chord syntax:
 
-- Notes/chords are written with
+Notes/chords are written with
 - a root note (lowercase letters a-g)
 - opt: increments sharp (#) or flat (&)
-- opt: absolute octave (ignores global reference octave) (numbers [0-9]+)
+- opt: absolute octave (ignore global reference octave, forcing absolute octave) (numbers [0-9]+)
 - opt: chord prefix (') and chord shape (e.g. maj7)
-- opt: inversion prefix (/) and inversion pivot (lowercase letters a-g) (when the pivot is in the chord, the chord is inverted so the pivot becomes the lowest note; when it is not, it is shifted one octave down,making it a bass note)
+- opt: inversion prefix (/) and inversion pivot (lowercase letters a-g) (when the pivot is in the chord, the chord is inverted so the pivot becomes the lowest note; when it is not, it is shifted down one octave, making it a bass note)
 
-In order to add notes and chords to the writehead, they are just written in sequence without being interupted by timing commands. Else the writehead is overwritten.
+In order to add notes and chords to the write head, they are just written in sequence without being interupted by timing commands. Else the writehead is overwritten.
 
 Examples:
 - c4        adds pitch value 48 to the write head
