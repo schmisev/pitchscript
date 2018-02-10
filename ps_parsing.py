@@ -4,6 +4,28 @@ import re
 
 class Parser:
     def __init__(self):
+        self.line_parser = LineParser()
+        self.channels = list()
+
+    """
+    Parses script and write to channels
+    """
+    def write(self, chars: str):
+        lines = chars.split("\n")
+
+        for l in lines:
+            self.line_parser.write(l)
+            self.line_parser.beautify_timetable()
+            self.channels.append(self.line_parser.get_timetable())
+
+    """
+    Getter for channels 
+    """
+    def get_channels(self):
+        return self.channels
+
+class LineParser:
+    def __init__(self):
         # Resulting timetable (MIDI-like)
         # Structure: [time, pitch, on = 0 | off = 1]
         self.timetable = list()

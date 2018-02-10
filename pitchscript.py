@@ -1,4 +1,4 @@
-from ps_parsing import Parser
+from ps_parsing import LineParser, Parser
 from ps_macros import Preprocessor
 from ps_output import print_timetable, play_timetable
 import sys
@@ -8,7 +8,7 @@ Command-line reply function
 Exit: $
 """
 def repl():
-    p = Parser()
+    p = LineParser()
     pp = Preprocessor()
     while True:
         chars = input(">> ")
@@ -29,9 +29,12 @@ def comp(argv):
     pp = Preprocessor()
     pp_chars = pp.preprocess(f.read())
     p.write(pp_chars)
-    p.beautify_timetable()
-    print_timetable(p.get_timetable())
-    play_timetable(p.get_timetable())
+    
+    channels = p.get_channels()
+
+    for c in range(len(channels)):
+        print("\nChannel {}".format(c))
+        print_timetable(channels[c])
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
