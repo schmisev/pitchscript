@@ -48,3 +48,39 @@ def play_timetable(timetable, velocity=127, bpm=200):
     
     midi_out.close()
     md.quit()
+
+"""
+Midi player
+expects channels
+"""
+def play_channels(channels, velocity=64, bpm=200, instruments=[0]):
+    # Prepare channels
+    merged = list()
+    for i in range(len(channels)):
+        for c in channels[i]:
+            merged.append(c + [i])
+    merged.sort()
+
+    # Prepare output
+    md.init()
+    out_id = md.get_default_output_id()
+    midi_out = md.Output(out_id)
+
+    for i in range(len(instruments)):
+        midi_out.set_instrument(instruments[i], i)
+
+    bps = bpm / 60
+    clock = 0
+
+    for t in merged:
+        time, status, pitch, channel = t
+        if time > clock:
+            dt.sleep((time - clock) / bps)
+            clock = time
+        if status == ON:
+            midi_out.note_on(pitch, velocity, channel)
+        elif status == OFF:
+            midi_out.note_off(pitch, velocity, channel)
+    
+    midi_out.close()
+    md.quit()

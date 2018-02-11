@@ -1,6 +1,6 @@
 from ps_parsing import LineParser, Parser
 from ps_macros import Preprocessor
-from ps_output import print_timetable, play_timetable
+from ps_output import print_timetable, play_timetable, play_channels
 import sys
 
 """
@@ -32,9 +32,7 @@ def comp(argv):
     
     channels = p.get_channels()
 
-    for c in range(len(channels)):
-        print("\nChannel {}".format(c))
-        print_timetable(channels[c])
+    play_channels(channels, instruments=[0, 0, 0])
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
